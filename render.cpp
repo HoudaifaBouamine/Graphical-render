@@ -1,6 +1,6 @@
 #include <iostream>
 #include "cls2dScreen.h"
-using namespace std;
+
 
 int main() {
 
@@ -8,8 +8,10 @@ int main() {
 
 	while (true) {
 		screen.print();
-		screen.angle_oz += 0.1;
+		screen.angle_oz += 0.001;
+		//system("pause>1");
 	}
+
 
 	return 0;
 }

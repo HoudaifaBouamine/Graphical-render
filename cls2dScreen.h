@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-#define ll int
+#include "speed.h"
 using namespace std;
 
 class cls2dScreen
@@ -31,6 +31,24 @@ public :
 
 		ll pos_x = 1 << x;
 		_ptr[y] = _ptr[y] | pos_x;
+	}
+
+	char _get_y(pair<char, char> pt1, pair<char, char> pt2,char x) {
+
+		return ((pt1.second - pt2.second)*(pt1.first + x) / ((pt1.first - pt2.first == 0) ? 1 : pt1.first - pt2.first));
+	}
+
+	void link2points(pair<char, char> pt1, pair<char, char> pt2) {
+
+		if (pt2.first < pt1.first) {
+			link2points(pt2,pt1);
+			return;
+		}
+
+		for (char i = 0; (i < abs(pt1.first - pt2.first) - 1) && i < 20; i++)
+		{
+			draw_point(pt1.first + i, pt1.second + _get_y(pt1,pt2,i));
+		}
 	}
 
 	char eye_x = 20, eye_y = 20, eye_z = -30;
@@ -65,7 +83,23 @@ public :
 		d = 8;
 
 		while (d--)
-			draw_point(p[d].first,p[d].second);
+			draw_point(p[d].first, p[d].second);
+
+		link2points(p[0], p[1]);
+		link2points(p[0], p[4]);
+		link2points(p[0], p[2]);
+
+		link2points(p[3], p[2]);
+		link2points(p[3], p[7]);
+		link2points(p[3], p[1]);
+
+		link2points(p[6], p[4]);
+		link2points(p[6], p[2]);
+		link2points(p[6], p[7]);
+
+		link2points(p[5], p[7]);
+		link2points(p[5], p[4]);
+		link2points(p[5], p[1]); 
 	}
 
 
@@ -88,19 +122,22 @@ public :
 		draw_cube();
 
 		string show = "";	
-
+		
 		for (char i = 0; i < _length; i++) {
+
 
 			for (ll j = 1; j != 0; j = j << 1) {
 				show += ((_ptr[i] & j) == j) ? '#' : ' ';
 				show += ' ';
 			}
+	
 			
 			show += '\n';
 		}
-		system("cls");
 		cout << show << endl;
 
+		
+		
 		//char* ptr = &show;
 		//copy(_ptr, _ptr + _length - 1, ostream_iterator<ll>(cout, "\n"));
 
