@@ -31,23 +31,20 @@ public :
 		_ptr[y] = _ptr[y] | pos_x;
 	}
 
-	char eye_x = 30, eye_y = 30, eye_z = -40;
+	char eye_x = 20, eye_y = 20, eye_z = -30;
 
 	pair<char,char> from_3d_to_2d(char x,char y,char z) {
 
-		char des = eye_z * -1;
-
-		float alpha = (float)(des) * ((float)(abs(eye_x - x))) / ((float)(z + des));
-		float beta = (float)(des) * ((float)(abs(eye_y - y))) / ((float)(z + des));
 		pair<char, char> p;
-		p.first = x - des * tan(alpha);
-		p.second = y - des * tan(beta);
+
+		p.first = eye_x + (float)(-eye_z) * ((float)(x - eye_x)) / ((float)(z - eye_z));
+		p.second = eye_y +  (float)(-eye_z) * ((float)(y - eye_y)) / ((float)(z -eye_z));
 
 		return p;
 	}
 
 	void draw_cube() {
-		char d = 100;
+		char d = 30;
 
 		pair<char, char> p[8];
 
@@ -61,7 +58,7 @@ public :
 		p[6] = from_3d_to_2d(10, 10, d + 20);
 		p[7] = from_3d_to_2d(30, 10, d + 20);
 
-		d = 7;
+		d = 8;
 
 		while (d--)
 			draw_point(p[d].first,p[d].second);
