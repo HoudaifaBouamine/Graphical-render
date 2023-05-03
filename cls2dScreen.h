@@ -11,18 +11,20 @@ private:
 	ll* _ptr = nullptr;
 	char _length = 0;
 
-	float angle_ox = 0;
-	float angle_oy = 0;
-	float angle_oz = 0;
-
+	
 
 public :
+
+	void clear() {
+		char length = _length;
+		while (length--)
+			_ptr[length] = 0;
+	}
 
 	cls2dScreen(char length) {
 		_length = length;
 		_ptr = new ll[_length];
-		while (length--)
-			_ptr[length] = 0;
+		clear();
 	}
 	
 	void draw_point(char x,char y) {
@@ -34,6 +36,8 @@ public :
 	char eye_x = 20, eye_y = 20, eye_z = -30;
 
 	pair<char,char> from_3d_to_2d(char x,char y,char z) {
+
+		routate(x,y,z);
 
 		pair<char, char> p;
 
@@ -64,17 +68,23 @@ public :
 			draw_point(p[d].first,p[d].second);
 	}
 
+
+	float angle_ox = 0;
+	float angle_oy = 0;
+	float angle_oz = 0;
+
 	void routate(char& x,char& y,char& z) {
 
-		char X = x * cos(angle_oz) - y * sin(angle_oz);
-		char Y = y * cos(angle_oz) + x * sin(angle_oz);
+		char X = (x - 15) * cos(angle_oz) - (y - 15) * sin(angle_oz);
+		char Y = (y - 15) * cos(angle_oz) + (x - 15) * sin(angle_oz);
 
-		x = X;
-		y = Y;
+		x = X + 15;
+		y = Y + 15;
 	}
 
 	void print() {
 		
+		clear();
 		draw_cube();
 
 		string show = "";	
