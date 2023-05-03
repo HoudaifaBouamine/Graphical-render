@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
-#include "speed.h"
 using namespace std;
+#define ll int
 
 class cls2dScreen
 {
@@ -40,14 +40,11 @@ public :
 
 	void link2points(pair<char, char> pt1, pair<char, char> pt2) {
 
-		if (pt2.first < pt1.first) {
-			link2points(pt2,pt1);
-			return;
-		}
+		float a = ((float)pt2.second - pt1.second) / (float)(pt2.first - pt1.first);
 
-		for (char i = 0; (i < abs(pt1.first - pt2.first) - 1) && i < 20; i++)
+		for (char i = 0; (i <pt2.first - pt1.first - 1); i++)
 		{
-			draw_point(pt1.first + i, pt1.second + _get_y(pt1,pt2,i));
+			draw_point(pt1.first + i,pt1.second + i * a );
 		}
 	}
 
@@ -85,7 +82,7 @@ public :
 		while (d--)
 			draw_point(p[d].first, p[d].second);
 
-		link2points(p[0], p[1]);
+	/*	link2points(p[0], p[1]);
 		link2points(p[0], p[4]);
 		link2points(p[0], p[2]);
 
@@ -99,7 +96,7 @@ public :
 
 		link2points(p[5], p[7]);
 		link2points(p[5], p[4]);
-		link2points(p[5], p[1]); 
+		link2points(p[5], p[1]); */
 	}
 
 
@@ -114,6 +111,18 @@ public :
 
 		x = X + 15;
 		y = Y + 15;
+
+		char Z = (z - 15) * cos(angle_ox) - (y - 15) * sin(angle_ox);
+		Y = (y - 15) * cos(angle_ox) + (z - 15) * sin(angle_ox);
+
+		x = X + 15;
+		y = Y + 15;
+
+		/*char X = (x - 15) * cos(angle_oz) - (y - 15) * sin(angle_oz);
+		char Y = (y - 15) * cos(angle_oz) + (x - 15) * sin(angle_oz);
+
+		x = X + 15;
+		y = Y + 15;*/
 	}
 
 	void print() {

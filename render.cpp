@@ -8,8 +8,9 @@ int main() {
 
 	while (true) {
 		screen.print();
-		screen.angle_oz += 0.001;
-		//system("pause>1");
+		screen.angle_ox += 0.001;
+		//screen.angle_oz += 0.001;
+
 	}
 
 
