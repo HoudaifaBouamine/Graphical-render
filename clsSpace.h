@@ -131,7 +131,7 @@ public:
 
 		_save();
 		clear_screen();
-		Sleep(50);
+		Sleep(1);
 		//system("pause>0");
 		cout << _sSpace << endl;
 	}

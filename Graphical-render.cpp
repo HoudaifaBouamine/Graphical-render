@@ -13,7 +13,7 @@ int main(){
 
     system("pause>0");
     
-    c.move(-1, 2,2,2);
+    c.move(-1, 3,3,3);
    
 
     return 0;
