@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <windows.h>
 #include <conio.h> 
 
 using namespace std;
@@ -121,12 +122,18 @@ public:
 		_generatespace();
 	}
 
+	static void clear_screen()
+	{
+		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), { 0,0 });
+	}
+
 	void print() {
 
 		_save();
-		
+		clear_screen();
+		Sleep(50);
 		//system("pause>0");
-		cout << _sSpace;
+		cout << _sSpace << endl;
 	}
 
 
@@ -134,7 +141,9 @@ public:
 	void print(short layer) {
 
 		string sSpace = _generateString2D(layer);
-		system("cls");
+		//system("cls");
+		clear_screen();
+		Sleep(50);
 		cout << sSpace;
 	}
 
