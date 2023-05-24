@@ -1,7 +1,7 @@
 #include <iostream>
 #include "clsSpace.h"
 #include "clsCube.h"
-#include "clsHiper_Cube.h"
+#include "clsTriangle.h"
 using namespace std;
 
 static vector<string> Split(string S1, string Delim)
