@@ -1,3 +1,5 @@
+
+
 #pragma once
 #include <iostream>
 #include <string>
@@ -12,49 +14,54 @@ private:
 
     space _space;
     short _a = 0;
-    void _draw() {
+    
 
-        short a = _a;
+        void _draw() {
 
-        for (size_t i = 0; i < a; i++)
-        {
+            short a = _a;
+
+            for (size_t i = 0; i < a; i++)
+            {
 
 
-            _space.point(-a / 2 + i, -a / 2, a / 2);
-            _space.point(-a / 2, -a / 2 + i, a / 2);
-            _space.point(a / 2 - i, a / 2, a / 2);
-            _space.point(a / 2, a / 2 - i, a / 2);
-            _space.point(-a / 2 + i, -a / 2, -a / 2);
-            _space.point(-a / 2, -a / 2 + i, -a / 2);
-            _space.point(a / 2 - i, a / 2, -a / 2);
-            _space.point(a / 2, a / 2 - i, -a / 2);
-            _space.point(-a / 2, -a / 2, i - a / 2);
-            _space.point(a / 2, a / 2, i - a / 2);
-            _space.point(-a / 2, a / 2, i - a / 2);
-            _space.point(a / 2, -a / 2, i - a / 2);
+                _space.point(-a / 2 + i, -a / 2, a / 2);
+                _space.point(-a / 2, -a / 2 + i, a / 2);
+                _space.point(a / 2 - i, a / 2, a / 2);
+                _space.point(a / 2, a / 2 - i, a / 2);
+                _space.point(-a / 2 + i, -a / 2, -a / 2);
+                _space.point(-a / 2, -a / 2 + i, -a / 2);
+                _space.point(a / 2 - i, a / 2, -a / 2);
+                _space.point(a / 2, a / 2 - i, -a / 2);
+                _space.point(-a / 2, -a / 2, i - a / 2);
+                _space.point(a / 2, a / 2, i - a / 2);
+                _space.point(-a / 2, a / 2, i - a / 2);
+                _space.point(a / 2, -a / 2, i - a / 2);
+            }
+
+            /*short s = 1;
+
+            for (size_t i = 0; i < a; i++)
+            {
+
+
+                _space.point(-a / 2 + i + s, -a / 2, a / 2);
+                _space.point(-a / 2 + s, -a / 2 + i, a / 2);
+                _space.point(a / 2 - i + s, a / 2, a / 2);
+                _space.point(a / 2 + s, a / 2 - i, a / 2);
+                _space.point(-a / 2 + i + s, -a / 2, -a / 2);
+                _space.point(-a / 2 + s, -a / 2 + i, -a / 2);
+                _space.point(a / 2 - i+s, a / 2, -a / 2);
+                _space.point(a / 2+s, a / 2 - i, -a / 2);
+                _space.point(-a / 2+s, -a / 2, i - a / 2);
+                _space.point(a / 2+s, a / 2, i - a / 2);
+                _space.point(-a / 2+s, a / 2, i - a / 2);
+                _space.point(a / 2+s, -a / 2, i - a / 2);
+            }*/
+
         }
 
-        /*short s = 1;
-
-        for (size_t i = 0; i < a; i++)
-        {
-
-
-            _space.point(-a / 2 + i + s, -a / 2, a / 2);
-            _space.point(-a / 2 + s, -a / 2 + i, a / 2);
-            _space.point(a / 2 - i + s, a / 2, a / 2);
-            _space.point(a / 2 + s, a / 2 - i, a / 2);
-            _space.point(-a / 2 + i + s, -a / 2, -a / 2);
-            _space.point(-a / 2 + s, -a / 2 + i, -a / 2);
-            _space.point(a / 2 - i+s, a / 2, -a / 2);
-            _space.point(a / 2+s, a / 2 - i, -a / 2);
-            _space.point(-a / 2+s, -a / 2, i - a / 2);
-            _space.point(a / 2+s, a / 2, i - a / 2);
-            _space.point(-a / 2+s, a / 2, i - a / 2);
-            _space.point(a / 2+s, -a / 2, i - a / 2);
-        }*/
-
-    }
+      
+    
 
 public:
 
@@ -65,30 +72,30 @@ public:
         _space = space;
     }
 
-    void print() {
+    string print() {
         _space.clear();
         _draw();
-        _space.print();
+        return _space.print();
     }
 
-private :
+private:
 
-  
 
-public : void routate(float angleOX,float angleOY,float angleOZ) {
 
-        _space.routate(angleOX,angleOY,angleOZ);
+public: void routate(float angleOX, float angleOY, float angleOZ) {
 
-    }
+    _space.routate(angleOX, angleOY, angleOZ);
 
-       void move(short steps, float angleOX, float angleOY, float angleOZ) {
+}
 
-           for (size_t i = 0; i < steps; i++)
-           {
-               print();
-               routate(angleOX, angleOY, angleOZ);
+      void move(short steps, float angleOX, float angleOY, float angleOZ) {
 
-           }
-    }
+          for (size_t i = 0; i < steps; i++)
+          {
+              print();
+              routate(angleOX, angleOY, angleOZ);
+
+          }
+      }
 };
 

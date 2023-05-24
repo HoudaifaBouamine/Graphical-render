@@ -105,7 +105,7 @@ private:
 
 public:
 
-	string show = "#";
+	string show = "$";
 	float angleOZ = 0, angleOY = 0, angleOX = 0;
 
 
@@ -122,18 +122,13 @@ public:
 		_generatespace();
 	}
 
-	static void clear_screen()
-	{
-		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), { 0,0 });
-	}
 
-	void print() {
+	string print() {
 
 		_save();
-		clear_screen();
-		Sleep(1);
+		
 		//system("pause>0");
-		cout << _sSpace << endl;
+		return  _sSpace;
 	}
 
 
@@ -142,7 +137,6 @@ public:
 
 		string sSpace = _generateString2D(layer);
 		//system("cls");
-		clear_screen();
 		Sleep(50);
 		cout << sSpace;
 	}
